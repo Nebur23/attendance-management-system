@@ -47,7 +47,7 @@ The Attendance Management System (AMS) is a web and mobile application designed 
    - Run database migrations to set up the database schema.
 
 4. **Running the Application**:
-   - Start the backend server using `npm start` or `node server.js`.
+   - Start the backend server using `npm run dev` or `node index.js`.
    - Start the frontend development server for both mobile and web applications.
 
 5. **Accessing the Application**:
