@@ -1,13 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const studentController = require("../../controllers/studentController")
+const verifyJWT = require("../../middlewares/verifyJwt")
 
 router
   .route("/")
-  .get(studentController.getAllStudents)
-  .post(studentController.createNewStudent)
-  .put(studentController.updateStudent)
-  .delete(studentController.deleteStudent);
+  .get(verifyJWT, studentController.getAllStudents)
+  .post(verifyJWT, studentController.createNewStudent)
+  .put(verifyJWT, studentController.updateStudent)
+  .delete(verifyJWT,studentController.deleteStudent);
 
 router.route("/:id")
 .get((req,res) => {
