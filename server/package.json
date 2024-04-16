@@ -8,7 +8,6 @@
   },
   "author": "neb23",
   "license": "MIT",
-  "description": "",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "dotenv": "^16.4.5",
@@ -17,5 +16,7 @@
   },
   "devDependencies": {
     "nodemon": "^3.1.0"
-  }
+  },
+  "keywords": [],
+  "description": ""
 }
