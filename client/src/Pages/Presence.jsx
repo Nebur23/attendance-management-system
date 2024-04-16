@@ -10,18 +10,18 @@ export default function Presence() {
         <img src={user} alt="user" className="mt-4" />
       </div>
       <div className="flex items-center pl-4 mt-10">
-        <label htmlFor="date" className="mr-2 text-gray-700">
+        <label htmlFor="date" className="mr-2 text-gray-700 text-4xl font-serif font-extrabold">
           Date:
         </label>
         <input
           type="date"
           id="date"
-          className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          className="px-3  bg-blue-500 text-white text-2xl py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
         />
       </div>
-      <div className="flex flex-row bg-green-500 justify-between mt-10 py-2 ">
+      <div className="flex flex-row bg-blue-500 justify-between mt-10 py-2 ">
         <p className="text-white text-lg md:text-3xl font-serif pl-4">CSE 1</p>
-        <div className=" rounded-md mx-10 w-40 md:w-80 p-2 mt-4 hover:opacity-80 bg-green-300 outline-none text-white font-serif text-xl  md:text-3xl text-center  ">
+        <div className=" rounded-md mx-10 w-40 md:w-80 p-2 mt-4 hover:opacity-80 bg-blue-300 outline-none text-white font-serif text-xl  md:text-3xl text-center  ">
           <input
             type="button"
             value="Add New Student"
@@ -76,11 +76,11 @@ export default function Presence() {
             </tr>
           </tbody>
         </table>
-        <div className=" rounded-md mx-auto w-64  p-2 mt-4 hover:opacity-80 bg-green-500 outline-none text-white font-serif text-xl  md:text-3xl text-center  ">
+        <div className=" rounded-md mx-auto w-64  p-2 mt-10 hover:opacity-80 bg-blue-500 outline-none text-white font-serif text-xl  md:text-3xl text-center  ">
           <input
             type="button"
             value="Print Attendance"
-            className="outline-none"
+            className="outline-none "
           />
         </div>
       </div>

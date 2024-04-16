@@ -13,7 +13,7 @@ export default function Teacher() {
         <img src={user} alt="user" className="mt-4" />
       </div>
       <div className="font-serif text-lg md:text-xl md:pl-4  font-medium mt-10 ">
-        <p className="text-green-500 text-center text-3xl ">
+        <p className="text-blue-500 text-center text-3xl ">
           Class attendance activities
         </p>
         <div className="mx-10 mt-4 ">
@@ -145,11 +145,11 @@ export default function Teacher() {
           </div>
         </div>
         <div>
-          <p className="text-green-500 text-center text-3xl mt-10 ">
+          <p className="text-blue-500 text-center text-3xl mt-10 ">
             Other activities
           </p>
           <div className="flex flex-row justify-center">
-            <div className=" rounded-md mx-4 p-2 mt-4 hover:opacity-80 bg-green-500 outline-none text-white font-serif text-xl  md:text-3xl text-center  ">
+            <div className=" rounded-md mx-4 p-2 mt-4 hover:opacity-80 bg-blue-500 outline-none text-white font-serif text-xl  md:text-3xl text-center  ">
               <input
                 type="button"
                 value="Manage time table"
@@ -159,7 +159,7 @@ export default function Teacher() {
                 className="outline-none"
               />
             </div>
-            <div className=" rounded-md mx-4 p-2 mt-4 hover:opacity-80 bg-green-500 outline-none text-white font-serif text-xl  md:text-3xl text-center  ">
+            <div className=" rounded-md mx-4 p-2 mt-4 hover:opacity-80 bg-blue-500 outline-none text-white font-serif text-xl  md:text-3xl text-center  ">
               <input
                 type="button"
                 value="Manage Students"

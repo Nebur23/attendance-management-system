@@ -20,10 +20,10 @@ export default function Skip() {
         onClick={() => {
           navigate("/success");
         }}
-        className=' flex gap-3 items-center px-0 justify-center py-[15px] max-w-80 my-[30px] bg-[#f1f1F1]  text-base rounded-md font-extrabold shadow-[5px_5px_0px_0px_#000] text-black w-full focus:shadow-[1px_2px_0px_0px_#000] translate-y-1'
+        className='  flex gap-3 items-center px-0 justify-center py-[15px] max-w-80 my-[30px] bg-blue-500 text-white text-2xl   rounded-md font-extrabold  w-full  translate-y-1'
       >
         Skip
-        <img src={arrow} className='w-6  h-6 ' />
+        <img src={arrow} className='w-6  h-6 hover:ml-2 ' />
       </button>
     </section>
   );

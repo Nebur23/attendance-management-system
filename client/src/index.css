@@ -14,3 +14,6 @@ body {
   width: 100vw;
   background: #fafafa;
 }
+body::-webkit-scrollbar{
+  display: none;
+}
