@@ -1,5 +1,5 @@
-const User = require("../model/User");
-const bcrypt = require("bcrypt");
+import User from "../model/User";
+import bcrypt from 'bcrypt'
 
 const getAllUsers = (req, res) => {
   res.send("users route");

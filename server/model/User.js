@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const { type } = require("os");
+import mongoose from 'mongoose'
+import type from 'os'
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -19,4 +19,4 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model("User", userSchema);
 
-module.exports = User;
+export default User

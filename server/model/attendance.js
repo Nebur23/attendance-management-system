@@ -1,5 +1,4 @@
-const mongoose = require("mongoose");
-
+import mongoose from "mongoose";
 const sttendanceSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -23,4 +22,4 @@ const sttendanceSchema = new mongoose.Schema({
 
 const Attendance = mongoose.model("Attendance", sttendanceSchema);
 
-module.exports = Attendance;
+export default Attendance
