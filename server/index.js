@@ -1,8 +1,8 @@
-const express = require("express");
+import express from 'express'
 const app = express();
-const dotenv = require("dotenv");
+import { config } from 'dotenv';
 
-dotenv.config();
+config()
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
