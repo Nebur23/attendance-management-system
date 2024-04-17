@@ -2,10 +2,10 @@ import { Route, Routes } from "react-router";
 import Register from "./Pages/Register";
 import Success from "./Pages/Success";
 import Skip from "./Pages/Skip";
-import SignIn from "./Pages/SignIn";
 import Teacher from "./Pages/Teacher";
 import Forgot from "./Pages/Forgot";
 import Presence from "./Pages/Presence";
+import SignIn from "./Pages/SignIn";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 export default function App() {
