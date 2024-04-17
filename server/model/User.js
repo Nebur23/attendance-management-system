@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { type } = require("os");
+
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
   refreshToken: {
     type: String,
     default: "",
-  },
+  }
 });
 
 const User = mongoose.model("User", userSchema);

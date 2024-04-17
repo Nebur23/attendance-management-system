@@ -2,13 +2,13 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
 const verifyJWT = require("./middlewares/verifyJwt");
-const cookieParser = require("cookie-parser")
+const cookieParser = require("cookie-parser");
 
 dotenv.config();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser())
+app.use(cookieParser());
 
 const connectDB = require("./db/conect");
 const PORT = process.env.PORT || 8000;
@@ -22,7 +22,7 @@ app.use("/attendance", require("./routes/api/attendance"));
 app.use("/refresh", require("./routes/api/refresh"));
 app.use("/logout", require("./routes/api/logout"));
 
-app.use(verifyJWT) // protected routes
+app.use(verifyJWT); // protected routes
 app.use("/users", require("./routes/api/user"));
 app.all("*", (req, res) => {
   res.status(404);

@@ -6,9 +6,8 @@ export default function Register() {
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
-    title: "",
-    link: "",
-    description: "",
+    name: "",
+    password: "",
   });
 
   const handleChange = e => {
@@ -24,71 +23,136 @@ export default function Register() {
     e.preventDefault();
 
     axios
-      .post(`${import.meta.env.VITE_API_URL}/api/anime`, form)
+      .post(`${import.meta.env.VITE_API_URL}/register`, form, {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      })
       .then(res => console.log(res.data))
       .catch(err => console.log(err));
 
     setForm({
-      title: "",
-      link: "",
-      description: "",
+      name: "",
+      password: "",
+      confirmPassword: "",
     });
 
     navigate("/skip");
   };
   return (
     <section className='flex flex-col justify-center items-center   mx-auto  h-[100vh] max-w-5xl bg-[#fafafa] text-center w-full p-6'>
-      <div className='flex justify-center items-center flex-col shadow-[5px_7px_2px_1px_#000] bg-white  w-full m-10 h-[95%]  rounded-3xl px-5 py-[50px] max-w-xl '>
-        <h1 className='text-black font-extrabold text-2xl mt-2 text-center w-full px-5'>
-          Welcome to ams
-        </h1>
-        <form onSubmit={handleSubmit} className='max-w-full w-full '>
-          <div className='flex flex-col items-baseline m-5  '>
-            <label htmlFor='title' className='font-semibold py-[5px] '>
-              Usename
-            </label>
-            <input
-              type='text'
-              className='outline-none border-2 border-black shadow-[3px_4px_0px_1px_#000] px-[10px] py-3 rounded-md text-base w-full focus:shadow-[1px_2px_0px_0px_#000] translate-y-1'
-              id='title'
-              placeholder='Enter a username'
-              value={form.title}
-              onChange={handleChange}
-            />
-          </div>
-          <div className='flex flex-col items-baseline m-5 '>
-            <label htmlFor='link' className='font-semibold py-[5px] '>
-              Password
-            </label>
-            <input
-              type='url'
-              className='outline-none border-2 border-black shadow-[3px_4px_0px_1px_#000] px-[10px] py-3 rounded-md text-base w-full focus:shadow-[1px_2px_0px_0px_#000] translate-y-1'
-              id='link'
-              placeholder='Enter a password'
-              value={form.link}
-              onChange={handleChange}
-            />
-          </div>
-          <div className='flex flex-col items-baseline m-5 '>
-            <label htmlFor='description' className='font-semibold py-[5px] '>
-              ConfirmPassword
-            </label>
-            <input
-              type='text'
-              className='outline-none border-2 border-black shadow-[3px_4px_0px_1px_#000] px-[10px] py-3 rounded-md text-base w-full focus:shadow-[1px_2px_0px_0px_#000] translate-y-1'
-              id='description'
-              placeholder='Please enter again Pasword'
-              value={form.description}
-              onChange={handleChange}
-            />
-          </div>
+      <div className='mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8'>
+        <div className='mx-auto max-w-lg'>
+          <h1 className='text-center text-2xl font-bold text-indigo-600 sm:text-3xl'>
+            Get started today
+          </h1>
 
-          <div className='flex flex-col items-baseline m-5 '>
-            <button className='p-[15px] my-[30px]  text-base rounded-md font-extrabold shadow-[5px_5px_0px_0px_#000] text-black bg-green-400 w-full focus:shadow-[1px_2px_0px_0px_#000] translate-y-1'>
-              Submit
+          <p className='mx-auto mt-4 max-w-md text-center text-gray-500'>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati
+            sunt dolores deleniti inventore quaerat mollitia?
+          </p>
+
+          <form
+            onSubmit={handleSubmit}
+            className='mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8 '
+          >
+            <p className='text-center text-lg font-medium'>
+              Sign up to your account
+            </p>
+
+            <div>
+              <label htmlFor='name' className='sr-only'>
+                Username
+              </label>
+
+              <div className='relative'>
+                <input
+                  type='text'
+                  className='w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm'
+                  id='name'
+                  placeholder='Enter a username'
+                  value={form.name}
+                  onChange={handleChange}
+                />
+
+                <span className='absolute inset-y-0 end-0 grid place-content-center px-4'>
+                  <svg
+                    xmlns='http://www.w3.org/2000/svg'
+                    className='size-4 text-gray-400'
+                    fill='none'
+                    viewBox='0 0 24 24'
+                    stroke='currentColor'
+                  >
+                    <path
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      strokeWidth='2'
+                      d='M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207'
+                    />
+                  </svg>
+                </span>
+              </div>
+            </div>
+
+            {/* password */}
+
+            <div>
+              <label htmlFor='password' className='sr-only'>
+                Password
+              </label>
+
+              <div className='relative'>
+                <input
+                  type='password'
+                  className='w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm'
+                  placeholder='Enter password'
+                  id='password'
+                  value={form.password}
+                  onChange={handleChange}
+                />
+
+                <span className='absolute inset-y-0 end-0 grid place-content-center px-4'>
+                  <svg
+                    xmlns='http://www.w3.org/2000/svg'
+                    className='size-4 text-gray-400'
+                    fill='none'
+                    viewBox='0 0 24 24'
+                    stroke='currentColor'
+                  >
+                    <path
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      placeholder='Enter a password'
+                      strokeWidth='2'
+                      d='M15 12a3 3 0 11-6 0 3 3 0 016 0z'
+                    />
+                    <path
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      strokeWidth='2'
+                      d='M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z'
+                    />
+                  </svg>
+                </span>
+              </div>
+            </div>
+
+            {/* submit btn */}
+
+            <button
+              type='submit'
+              className='block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white'
+            >
+              Sign up
             </button>
-          </div>
-        </form>
+
+            <p className='text-center text-sm text-gray-500'>
+              Already have an account?
+              <a className='underline' href='#'>
+                Sign in
+              </a>
+            </p>
+          </form>
+        </div>
       </div>
     </section>
   );
