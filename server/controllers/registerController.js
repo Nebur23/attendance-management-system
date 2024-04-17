@@ -28,7 +28,7 @@ const createNewUser = async (req, res) => {
       name,
       password: hashedPwd,
     });
-    await newUser.save()
+    
 
     res
       .status(201)
