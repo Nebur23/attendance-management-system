@@ -6,7 +6,8 @@ import Login from "./Pages/Login";
 import Teacher from "./Pages/Teacher";
 import Forgot from "./Pages/Forgot";
 import Presence from "./Pages/Presence";
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export default function App() {
   return (
     <div>
@@ -19,6 +20,7 @@ export default function App() {
         <Route path='/teacher' element={<Teacher />} />
         <Route path='/presence' element={<Presence />} />
       </Routes>
+      <ToastContainer position="top-center"/>
     </div>
   );
 }

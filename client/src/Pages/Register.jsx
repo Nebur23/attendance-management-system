@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router";
 import axios from "axios";
 import { useState } from "react";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export default function Register() {
   const navigate = useNavigate();
 
@@ -23,20 +24,23 @@ export default function Register() {
     e.preventDefault();
 
     axios
-      .post(`${import.meta.env.VITE_API_URL}/register`, form, {
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true,
-      })
-      .then(res => console.log(res.data))
-      .catch(err => console.log(err));
+      .post('http://localhost:8000/register', form)
+      .then(res => {console.log(res.data); toast.success('Successfully registered',{autoClose:1000});navigate("/skip");})
+      .catch(err => {
+        console.log(err)
+        if(err.response.status===400){
+          toast.error("name and password required",{autoClose:1000})
+        }
+        else if(err.response.status===409){
+          toast.error("name already exist",{autoClose:1000})
+          
+        }
+      });
+      
 
-    setForm({
-      name: "",
-      password: "",
-      confirmPassword: "",
-    });
+   
 
-    navigate("/skip");
+    
   };
   return (
     <section className='flex flex-col justify-center items-center   mx-auto  h-[100vh] max-w-5xl bg-[#fafafa] text-center w-full p-6'>
@@ -139,6 +143,7 @@ export default function Register() {
             {/* submit btn */}
 
             <button
+            onClick={handleSubmit}
               type='submit'
               className='block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white'
             >
