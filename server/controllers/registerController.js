@@ -1,7 +1,8 @@
 const User = require("../model/User");
 const bcrypt = require("bcrypt");
-
+const validation =require('../utils/Validate')
 const createNewUser = async (req, res) => {
+  
   const { name, password } = req.body;
 
   if (!name || !password)
@@ -10,6 +11,7 @@ const createNewUser = async (req, res) => {
       .json({ success: false, message: "Name and password are required" });
 
   try {
+    
     const existingUser = await User.findOne({ name }).exec();
 
     if (existingUser)
@@ -26,6 +28,7 @@ const createNewUser = async (req, res) => {
       name,
       password: hashedPwd,
     });
+    await newUser.save()
 
     res
       .status(201)

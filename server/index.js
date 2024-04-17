@@ -3,7 +3,8 @@ const app = express();
 const dotenv = require("dotenv");
 const verifyJWT = require("./middlewares/verifyJwt");
 const cookieParser = require("cookie-parser")
-
+const cors=require("cors")
+app.use(cors())
 dotenv.config();
 
 app.use(express.json());
@@ -24,10 +25,11 @@ app.use("/logout", require("./routes/api/logout"));
 
 app.use(verifyJWT) // protected routes
 app.use("/users", require("./routes/api/user"));
-app.all("*", (req, res) => {
+/*app.all("*", (req, res) => {
   res.status(404);
   res.send("404 page Not found!!!!");
 });
+*/
 
 app.listen(PORT, () => {
   console.log("server listening on port 8000");
