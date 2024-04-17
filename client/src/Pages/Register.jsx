@@ -51,8 +51,7 @@ export default function Register() {
           </h1>
 
           <p className='mx-auto mt-4 max-w-md text-center text-gray-500'>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati
-            sunt dolores deleniti inventore quaerat mollitia?
+          The Attendance Management System is a feature that allows users to track and manage attendance records efficiently within your app
           </p>
 
           <form

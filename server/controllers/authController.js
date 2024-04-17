@@ -11,7 +11,7 @@ const handleLogin = async (req, res) => {
 
   const user = await User.findOne({ name }).exec();
 
-  if (!user) return res.status(401); //unauthorised
+  if (!user) return res.status(402); //unauthorised
   const match = await bcrypt.compare(password, user.password);
 
   if (match) {
