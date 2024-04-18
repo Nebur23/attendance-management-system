@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Layout from "./Pages/Layout";
 import RequireAuth from "./components/RequireAuth";
 import Home from "./Pages/Home";
+import PDFDocument from "./components/pdf";
 export default function App() {
   return (
     <div>
@@ -29,6 +30,7 @@ export default function App() {
         <Route path='/login' element={<SignIn />} />
         <Route path='/forgot' element={<Forgot />} />
         <Route path='/register' element={<Register />} />
+        <Route path="/pdf" element={<PDFDocument />} />
       </Routes>
       <ToastContainer position='top-center' />
     </div>

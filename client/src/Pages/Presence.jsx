@@ -1,8 +1,19 @@
 import { useParams } from "react-router";
 import Table from "../components/table";
+import { useReactToPrint } from "react-to-print";
+import { useRef } from "react";
+import Button from "../components/button";
+import { toast } from "react-toastify";
 
 export default function Presence() {
   let params = useParams();
+  const componentPDF = useRef();
+
+  const generatePDF = useReactToPrint({
+    content: () => componentPDF.current,
+    documentTitle:"student attendance",
+    onAfterPrint: () =>  toast.success("Attendance successfully printed", { autoClose: 1000 });
+  });
   return (
     <section className='min-h-screen'>
       <div className='flex items-center pl-4 my-10 max-w-5xl mx-auto'>
@@ -28,7 +39,11 @@ export default function Presence() {
         </a>
       </div>
 
-      <Table />
+      <div ref={componentPDF} style={{ width: "100%" }}>
+        <Table />
+      </div>
+
+      <Button label='pdf' onClick={generatePDF} />
     </section>
   );
 }
