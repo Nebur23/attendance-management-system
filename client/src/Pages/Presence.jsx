@@ -11,9 +11,11 @@ export default function Presence() {
 
   const generatePDF = useReactToPrint({
     content: () => componentPDF.current,
-    documentTitle:"student attendance",
-    onAfterPrint: () =>  toast.success("Attendance successfully printed", { autoClose: 1000 });
+    documentTitle: "student attendance",
+    onAfterPrint: () => handleSuccess(),
   });
+  const handleSuccess = () =>
+    toast.success("Successfully pdf download", { autoClose: 1000 });
   return (
     <section className='min-h-screen'>
       <div className='flex items-center pl-4 my-10 max-w-5xl mx-auto'>
@@ -43,7 +45,9 @@ export default function Presence() {
         <Table />
       </div>
 
-      <Button label='pdf' onClick={generatePDF} />
+      <div className='mx-auto flex justify-start max-w-5xl mt-5'>
+        <Button label='download pdf' onClick={generatePDF} />
+      </div>
     </section>
   );
 }
