@@ -3,17 +3,19 @@ import menu from "../Images/ellipsis-vertical-solid.svg";
 import Sidebar from "./sidebar";
 
 const MobileNavbar = () => {
-  const [active, setActive] = useState(false);
-  const handleClose = () => {
-    return setActive(!active);
-  };
+  const [active, setActive] = useState(true);
+
   return (
-    <div className='md:hidden'>
-      <button onClick={() => setActive(!active)}>
+    <section className='md:hidden'>
+      <button
+        onClick={() => {
+          setActive(true);
+        }}
+      >
         <img src={menu} className='w-6 h-6' />
       </button>
-      <Sidebar active={active} handleClose={handleClose} />
-    </div>
+      <Sidebar active={active} setActive={setActive} />
+    </section>
   );
 };
 

@@ -1,20 +1,28 @@
-const Sidebar = ({ active, handleClose }) => {
+import PropTypes from "prop-types";
+
+const Sidebar = ({ active, setActive }) => {
   return (
-    <button
-      className={` fixed top-0 left-0 w-[90%] z-50 ${
-        active === false ? "left-0" : "-left-96 -32"
-      }  `}
+    <aside
+      className={`fixed top-0 w-[100%] z-50 transition-all ${
+        active ? "left-0" : "-left-[100%]"
+      }`}
     >
-      <div className='flex h-screen  flex-col justify-between  bg-white'>
+      <div className='flex h-screen flex-col justify-between bg-white'>
         <div className='flex flex-col border h-full'>
           <div className='p-4 border flex items-center justify-between'>
             <span className='grid size-10 place-content-center rounded-lg bg-gray-100 text-xs text-gray-600'>
               L
             </span>
 
-            <span onClick={() => handleClose()}>close</span>
+            <button
+              onClick={() => {
+                setActive(false);
+              }}
+            >
+              close
+            </button>
           </div>
-          <div className='flex gap-3 border  p-4'>
+          <div className='flex gap-3 border p-4'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               className='size-5 opacity-75'
@@ -51,8 +59,13 @@ const Sidebar = ({ active, handleClose }) => {
           Log out
         </div>
       </div>
-    </button>
+    </aside>
   );
+};
+
+Sidebar.propTypes = {
+  active: PropTypes.bool.isRequired,
+  setActive: PropTypes.func.isRequired,
 };
 
 export default Sidebar;
