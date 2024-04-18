@@ -28,7 +28,7 @@ export default function Register() {
       .then(res => {
         console.log(res.data);
         toast.success("Successfully registered", { autoClose: 1000 });
-        navigate("/login");
+        navigate("/success");
       })
       .catch(err => {
         console.log(err);

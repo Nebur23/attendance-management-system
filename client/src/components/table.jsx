@@ -1,4 +1,4 @@
-import Dropdown from "./dropdown";
+import GetStudents from "../CRUD/getStudents";
 
 const Table = () => {
   return (
@@ -23,22 +23,7 @@ const Table = () => {
             </tr>
           </thead>
 
-          <tbody className='divide-y divide-gray-200'>
-            <tr>
-              <td className='whitespace-nowrap px-4 py-2 font-medium text-gray-900'>
-                John Doe
-              </td>
-              <td className='whitespace-nowrap px-4 py-2 text-gray-700'>
-                IUC21E78009
-              </td>
-              <td className='whitespace-nowrap px-4 py-2 text-gray-700'>
-                M
-              </td>
-              <td className='whitespace-nowrap px-4 py-2 text-gray-700'>
-                <Dropdown />
-              </td>
-            </tr>
-          </tbody>
+          <GetStudents />
         </table>
       </div>
     </section>

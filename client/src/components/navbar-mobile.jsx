@@ -3,7 +3,7 @@ import menu from "../Images/ellipsis-vertical-solid.svg";
 import Sidebar from "./sidebar";
 
 const MobileNavbar = () => {
-  const [active, setActive] = useState(true);
+  const [active, setActive] = useState(false);
 
   return (
     <section className='md:hidden'>

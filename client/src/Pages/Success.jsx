@@ -20,7 +20,10 @@ export default function Success() {
             </div>
           </div>
         </div>
-        <Button label='continue' onClick={() => navigate("/teacher")} />
+        <Button
+          label='continue'
+          onClick={() => navigate("/account/settings")}
+        />
       </section>
     </div>
   );

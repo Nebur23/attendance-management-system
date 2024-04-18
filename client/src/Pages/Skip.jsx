@@ -26,7 +26,7 @@ export default function Skip() {
         </div>
       </div>
 
-      <Button label={"skip"} onClick={() => navigate("/success")} />
+      <Button label={"skip"} onClick={() => navigate("/")} />
     </section>
   );
 }

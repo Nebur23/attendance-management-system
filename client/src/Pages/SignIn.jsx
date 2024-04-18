@@ -1,11 +1,15 @@
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import useAuth from "../hooks/useAuth";
 
 export default function SignIn() {
   const navigate = useNavigate();
+  const { setAuth } = useAuth();
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
 
   const [form, setForm] = useState({
     name: "",
@@ -27,9 +31,11 @@ export default function SignIn() {
     axios
       .post("http://localhost:8000/auth", form)
       .then(res => {
-        console.log(res.data);
+        const accessToken = res?.data?.accessToken;
+        const roles = res?.data?.roles;
+        setAuth({ ...form, roles, accessToken });
         toast.success("Successfully login", { autoClose: 1000 });
-        navigate("/skip");
+        navigate(from);
       })
       .catch(err => {
         console.log(err);
@@ -45,7 +51,7 @@ export default function SignIn() {
       <div className='mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8'>
         <div className='mx-auto max-w-lg'>
           <h1 className='text-center text-2xl font-bold text-indigo-600 sm:text-3xl'>
-            Welcome back 
+            Welcome back
           </h1>
 
           <p className='mx-auto mt-4 max-w-md text-center text-gray-500'>
@@ -74,6 +80,7 @@ export default function SignIn() {
                   placeholder='Enter a username'
                   value={form.name}
                   onChange={handleChange}
+                  autoComplete='off'
                   required
                 />
 
@@ -111,6 +118,7 @@ export default function SignIn() {
                   id='password'
                   value={form.password}
                   onChange={handleChange}
+                  autoComplete='off'
                   required
                 />
 
