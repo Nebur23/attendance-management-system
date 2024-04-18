@@ -6,8 +6,8 @@ import Teacher from "./Pages/Teacher";
 import Forgot from "./Pages/Forgot";
 import Presence from "./Pages/Presence";
 import SignIn from "./Pages/SignIn";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export default function App() {
   return (
     <div>
@@ -18,9 +18,9 @@ export default function App() {
         <Route path='/login' element={<SignIn />} />
         <Route path='/forgot' element={<Forgot />} />
         <Route path='/teacher' element={<Teacher />} />
-        <Route path='/presence' element={<Presence />} />
+        <Route path='/presence/:id' element={<Presence />} />
       </Routes>
-      <ToastContainer position="top-center"/>
+      <ToastContainer position='top-center' />
     </div>
   );
 }
