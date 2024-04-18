@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { useState } from "react";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
 export default function Register() {
   const navigate = useNavigate();
 
@@ -24,23 +24,20 @@ export default function Register() {
     e.preventDefault();
 
     axios
-      .post('http://localhost:8000/register', form)
-      .then(res => {console.log(res.data); toast.success('Successfully registered',{autoClose:1000});navigate("/skip");})
+      .post("http://localhost:8000/register", form)
+      .then(res => {
+        console.log(res.data);
+        toast.success("Successfully registered", { autoClose: 1000 });
+        navigate("/login");
+      })
       .catch(err => {
-        console.log(err)
-        if(err.response.status===400){
-          toast.error("name and password required",{autoClose:1000})
-        }
-        else if(err.response.status===409){
-          toast.error("name already exist",{autoClose:1000})
-          
+        console.log(err);
+        if (err.response.status === 400) {
+          toast.error("name and password required", { autoClose: 1000 });
+        } else if (err.response.status === 409) {
+          toast.error("name already exist", { autoClose: 1000 });
         }
       });
-      
-
-   
-
-    
   };
   return (
     <section className='flex flex-col justify-center items-center   mx-auto  h-[100vh] max-w-5xl bg-[#fafafa] text-center w-full p-6'>
@@ -51,7 +48,8 @@ export default function Register() {
           </h1>
 
           <p className='mx-auto mt-4 max-w-md text-center text-gray-500'>
-          The Attendance Management System is a feature that allows users to track and manage attendance records efficiently within your app
+            The Attendance Management System is a feature that allows users to
+            track and manage attendance records efficiently within your app
           </p>
 
           <form
@@ -75,6 +73,7 @@ export default function Register() {
                   placeholder='Enter a username'
                   value={form.name}
                   onChange={handleChange}
+                  required
                 />
 
                 <span className='absolute inset-y-0 end-0 grid place-content-center px-4'>
@@ -111,6 +110,7 @@ export default function Register() {
                   id='password'
                   value={form.password}
                   onChange={handleChange}
+                  required
                 />
 
                 <span className='absolute inset-y-0 end-0 grid place-content-center px-4'>
@@ -142,18 +142,19 @@ export default function Register() {
             {/* submit btn */}
 
             <button
-            onClick={handleSubmit}
+              onClick={handleSubmit}
               type='submit'
-              className='block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white'
+              className='block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white disabled:opacity-50'
+              disabled={(form.name && form.password) === ""}
             >
               Sign up
             </button>
 
             <p className='text-center text-sm text-gray-500'>
               Already have an account?
-              <a className='underline' href='#'>
+              <Link to='/login' className='underline'>
                 Sign in
-              </a>
+              </Link>
             </p>
           </form>
         </div>
