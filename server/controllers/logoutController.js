@@ -8,8 +8,6 @@ const handleLogout = async (req, res) => {
 
   if (!cookies?.jwt) return res.sendStatus(204); //No content
 
-  console.log(cookies.jwt);
-
   const refreshToken = cookies.jwt;
 
   // is refreshToken in db

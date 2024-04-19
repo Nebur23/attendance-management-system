@@ -1,32 +1,38 @@
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import Table from "../components/table";
 import { useReactToPrint } from "react-to-print";
 import { useRef } from "react";
 import Button from "../components/button";
 import { toast } from "react-toastify";
+import { getCurrentDateTime } from "../utils/date-time";
 
 export default function Presence() {
   let params = useParams();
   const componentPDF = useRef();
+  const navigate = useNavigate();
 
   const generatePDF = useReactToPrint({
     content: () => componentPDF.current,
-    documentTitle: "student attendance",
+    documentTitle: `student attendance_${params.id}${getCurrentDateTime()}`,
     onAfterPrint: () => handleSuccess(),
   });
   const handleSuccess = () =>
     toast.success("Successfully pdf download", { autoClose: 1000 });
   return (
     <section className='min-h-screen'>
-      <div className='flex items-center pl-4 my-10 max-w-5xl mx-auto'>
-        <label htmlFor='date' className='mr-2 text-gray-700'>
-          Date:
-        </label>
-        <input
-          type='date'
-          id='date'
-          className='px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500'
-        />
+      <div className='flex items-center my-10 max-w-5xl  p-3 justify-between mx-auto'>
+        <div>
+          <label htmlFor='date' className='mr-2 text-gray-700'>
+            Date:
+          </label>
+          <input
+            type='date'
+            id='date'
+            className='px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500'
+          />
+        </div>
+
+        <Button label='back' icon={true} onClick={() => navigate("/teacher")} />
       </div>
 
       <div className='bg-indigo-600  py-3 text-white flex items-center justify-between px-6 lg:px-8 mx-auto max-w-5xl '>
@@ -45,7 +51,7 @@ export default function Presence() {
         <Table />
       </div>
 
-      <div className='mx-auto flex justify-start max-w-5xl mt-5'>
+      <div className='md:mx-auto flex justify-start max-w-5xl ml-4 mt-5 '>
         <Button label='download pdf' onClick={generatePDF} />
       </div>
     </section>

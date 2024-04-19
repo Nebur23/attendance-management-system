@@ -25,8 +25,7 @@ export default function Register() {
 
     axios
       .post("http://localhost:8000/register", form)
-      .then(res => {
-        console.log(res.data);
+      .then(() => {
         toast.success("Successfully registered", { autoClose: 1000 });
         navigate("/success");
       })

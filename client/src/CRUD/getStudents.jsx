@@ -7,8 +7,6 @@ const GetStudents = () => {
   const [students, setStudents] = useState([]);
   let params = useParams();
 
-  console.log("params", params);
-
   useEffect(() => {
     let isMounted = true;
     const controller = new AbortController();
@@ -20,8 +18,7 @@ const GetStudents = () => {
           {
             signal: controller.signal,
           }
-        );
-        console.log(res.data);
+        )
         isMounted && setStudents(res.data);
       } catch (error) {
         console.error(error);
@@ -36,7 +33,6 @@ const GetStudents = () => {
     };
   }, [params.id]);
 
-  console.log("student", students);
 
   return (
     <tbody className='divide-y divide-gray-200'>

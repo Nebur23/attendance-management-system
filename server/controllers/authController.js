@@ -37,11 +37,15 @@ const handleLogin = async (req, res) => {
 
     res.cookie("jwt", refreshToken, {
       httpOnly: true,
-      sameSite:'None',
-      secure:true,
+      sameSite: "None",
+      secure: true,
       maxAge: 24 * 60 * 60 * 1000,
     });
-    res.json({ sucess: `user ${name} logged in`, accessToken });
+    res.json({
+      sucess: `user ${name} logged in`,
+      accessToken,
+      roles: ["AT200"],
+    });
   } else {
     res
       .status(401)

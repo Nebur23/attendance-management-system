@@ -1,18 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const studentController = require("../../controllers/studentController")
-const verifyJWT = require("../../middlewares/verifyJwt")
+const studentController = require("../../controllers/studentController");
+
 
 router
   .route("/")
-  .get(verifyJWT, studentController.getAllStudents)
-  .post(verifyJWT, studentController.createNewStudent)
-  .put(verifyJWT, studentController.updateStudent)
-  .delete(verifyJWT,studentController.deleteStudent);
+  .get(studentController.getAllStudents)
+  .post(studentController.createNewStudent)
+  .put(studentController.updateStudent)
+  .delete(studentController.deleteStudent);
 
-router.route("/:id")
-.get((req,res) => {
-    res.json({ "id": req.params.id})
-})
+router.route("/:id").get(studentController.getAllStudentsBySpeciality);
 
 module.exports = router;

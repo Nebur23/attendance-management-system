@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import Button from "./button";
 
 const Sidebar = ({ active, setActive }) => {
   return (
@@ -14,13 +15,12 @@ const Sidebar = ({ active, setActive }) => {
               L
             </span>
 
-            <button
+            <Button
+              label='close'
               onClick={() => {
                 setActive(false);
               }}
-            >
-              close
-            </button>
+            />
           </div>
           <div className='flex gap-3 border p-4'>
             <svg

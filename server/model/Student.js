@@ -15,8 +15,6 @@ const studentSchema = new mongoose.Schema({
   },
   speciality: {
     type: String,
-    enum: ["cse", "eme", "cee", "che"],
-    default: "cse",
     require: true,
   },
 });
