@@ -1,13 +1,13 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import useAuth from "../hooks/useAuth";
 
 export default function SignIn() {
   const navigate = useNavigate();
-  const { setAuth } = useAuth();
+  const { setAuth, persist, setPersist } = useAuth();
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
 
@@ -46,6 +46,14 @@ export default function SignIn() {
         }
       });
   };
+
+  const togglePersist = () => {
+    setPersist(prev => !prev);
+  };
+
+  useEffect(() => {
+    localStorage.setItem("persist", persist);
+  }, [persist]);
   return (
     <section className='flex flex-col justify-center items-center   mx-auto  h-[100vh] max-w-5xl bg-[#fafafa] text-center w-full p-6'>
       <div className='mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8'>
@@ -159,9 +167,19 @@ export default function SignIn() {
               Sign In
             </button>
 
+            <div className='persistCheck hidden'>
+              <input
+                type='checkbox'
+                id='persist'
+                onChange={togglePersist}
+                checked={persist}
+              />
+              <label htmlFor='persist'>Trust This Device</label>
+            </div>
+
             <p className='text-center text-sm text-gray-500'>
               Dont have an account?
-              <Link to='/' className='underline'>
+              <Link to='/register' className='underline'>
                 Sign up
               </Link>
             </p>

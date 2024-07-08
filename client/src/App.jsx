@@ -12,25 +12,28 @@ import Layout from "./Pages/Layout";
 import RequireAuth from "./components/RequireAuth";
 import Home from "./Pages/Home";
 import PDFDocument from "./components/pdf";
+import PersistLogin from "./components/persistLogin";
 export default function App() {
   return (
     <div>
       <Routes>
         {/* protected routes */}
-        <Route element={<RequireAuth />}>
-          <Route element={<Layout />}>
-            <Route path='/' element={<Home />} />
-            <Route path='teacher' element={<Teacher />} />
-            <Route path='presence/:id' element={<Presence />} />
-            <Route path='success' element={<Success />} />
-            <Route path='account/settings' element={<Skip />} />
+        <Route element={<PersistLogin />}>
+          <Route element={<RequireAuth />}>
+            <Route element={<Layout />}>
+              <Route path='/' element={<Home />} />
+              <Route path='teacher' element={<Teacher />} />
+              <Route path='presence/:id' element={<Presence />} />
+              <Route path='success' element={<Success />} />
+              <Route path='account/settings' element={<Skip />} />
+            </Route>
           </Route>
         </Route>
         {/* public routes */}
         <Route path='/login' element={<SignIn />} />
         <Route path='/forgot' element={<Forgot />} />
         <Route path='/register' element={<Register />} />
-        <Route path="/pdf" element={<PDFDocument />} />
+        <Route path='/pdf' element={<PDFDocument />} />
       </Routes>
       <ToastContainer position='top-center' />
     </div>
